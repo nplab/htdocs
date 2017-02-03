@@ -5,35 +5,7 @@
     <meta charset="utf-8">
     <title>Imagechunkdemo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        html {
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        a:link {
-            color: rgb(0, 0, 238)
-        }
-
-        a:active {
-            color: rgb(0, 0, 238)
-        }
-
-        a:visited {
-            color: rgb(0, 0, 238)
-        }
-
-        a:hover {
-            color: rgb(0, 0, 238)
-        }
-
-        img.chunk {
-            float: left;
-        }
-
-        div.row {
-            overflow: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="css.css">
     <script>
         var timestampInit = Date.now();
         var navSupport = !(!('performance' in window) || !('timing' in window.performance) || !('navigation' in window.performance));
@@ -42,32 +14,30 @@
         window.onload = function() {
             timestampDelta = navSupport ? window.performance.now() : Date.now() - timestampInit;
             document.getElementById("timestampDelta").innerHTML = ((timestampDelta) / 1000).toFixed(2);
+
+            setTimeout(function() {
+                if (document.getElementById("checkbox").checked == true) {
+                    console.log('page reload');
+                    location.reload(true);
+                } else {
+                    console.log('nothing');
+                }
+            }, 5000);
         }
 
-        // reload page after 300 seconds - "hard reset"
-        setTimeout(function() {
-            if (document.getElementById("checkbox").checked == true) {
-                console.log('page reload');
-                location.reload(true);
-            } else {
-                console.log('nothing');
-            }
-        }, 300000);
+
     </script>
 
 </head>
 
 <body>
-
     <h1>Chunked Image - complex</h1>
-    <h3>1650 images in <span id="timestampDelta">-</span>s</h3>
     <p>
-        <a href="index.html">
-            << back to index</a>
+        <a href="index.html"><< back to index</a>
     </p>
+    <h4>1650 images in <span id="timestampDelta">-</span>s</h4>
     <p>
-        <input type="checkbox" id="checkbox" name="reload" value="reload"> Automatic page reload<br </p>
-
+        <input type="checkbox" id="checkbox" name="reload" value="reload" checked="checked"> Automatic page reload after 5s</p>
 
         <div class="row">
             <img class="chunk" src="chunks/chunk-0-0.jpg" />
@@ -1786,7 +1756,7 @@
             <img class="chunk" src="chunks/chunk-32-49.jpg" />
         </div>
 
-        <p>
+        <p class="footer">
             <small>Copyright &copy; Fachhochschule M&uuml;nster - Labor f&uuml;r Netzwerkprogrammierung - <a href="https://github.com/nplab/">@GitHub</a></small>
         </p>
 </body>
