@@ -1,6 +1,6 @@
 #!/bin/sh
 
-truncate -s 512B 512B
+truncate -s 512 512B
 truncate -s 1K 1K
 truncate -s 2K 2K
 truncate -s 4K 4K
