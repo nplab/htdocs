@@ -7,9 +7,9 @@ $chunksPerRow = floor($imagesize[1]/$chunksize);
 $chunksPerCol = floor($imagesize[0]/$chunksize);
 $srcImage = imagecreatefromjpeg($srcImageName);
 
-for($row = 0; $row < $chunksPerRow; $row++) {
+for ($row = 0; $row < $chunksPerRow; $row++) {
     echo '<div class="row">';
-    for($col = 0; $col < $chunksPerCol; $col++) {
+    for ($col = 0; $col < $chunksPerCol; $col++) {
         $chunkName =  "chunks/chunk-".$row."-".$col.".jpg";
         $chunk = imagecreatetruecolor($chunksize, $chunksize);
         imagecopy($chunk, $srcImage, 0, 0, $col*$chunksize, $row*$chunksize, $chunksize, $chunksize);
@@ -20,5 +20,3 @@ for($row = 0; $row < $chunksPerRow; $row++) {
     }
     echo '</div>';
 }
-
-?>
